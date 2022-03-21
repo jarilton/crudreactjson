@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Jamal Curry"
+    },
+    {
+      "id": 2,
+      "name": "Marie Green"
+    },
+    {
+      "id": 3,
+      "name": "John Doe"
+    },
+    {
+      "id": 4,
+      "name": "Anna Sorhus"
+    },
+    {
+      "id": 5,
+      "name": "Thomas Watson"
+    }
+  ]
+}
