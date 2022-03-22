@@ -1,13 +1,14 @@
 import React from 'react';
 import { Input } from 'antd';
 
-const FormElement = ({ handleSubmit, name, setName }) => {
+const FormElement = ({ handleSubmit, name, setName }) => (
   <form onSubmit={handleSubmit}>
-    <div className="form">
+    <div className="form-group">
       <Input
         type="text"
         placeholder="Digite o nome"
         value={name}
+        onChange={(e) => setName(e.target.value)}
         style={{width: "50%"}}
         autofocus
         required
@@ -19,6 +20,6 @@ const FormElement = ({ handleSubmit, name, setName }) => {
       </button>
     </div>
   </form>
-};
+);
 
 export default FormElement;

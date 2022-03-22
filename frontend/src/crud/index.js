@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import { toast } from 'react-toastify';
-import { getNames } from "./api";
+import { getNames,createName } from "./api";
 import { Link } from 'react-router-dom'
 import FormElement from './Form'
 import Loading from './Loading'
@@ -18,6 +18,21 @@ const Crud = () => {
 
   const loadNames = () => getNames().then((name) => setNames(name.data));
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    createName({name}).then((resp) => {
+      setLoading(false);
+      setName("");
+      toast.success(`${resp.data.name} is created`);
+      loadNames();
+    })
+    .catch((err) => {
+      setLoading(false);
+      if (err.response.status === 400) toast.error(err.response.data);
+    })
+  }
+
     return(
       <div className="container-fluid">
         <div className="row"> 
@@ -26,7 +41,13 @@ const Crud = () => {
               <Loading />
             ) : (
               <>
-                  <h4>Cadastro de Clientes com Json Server</h4>
+                <h4 className="text-center">Cadastro de Clientes com Json Server</h4>
+                <FormElement 
+                  handleSubmit={handleSubmit}
+                  name={name}
+                  setName={setName}
+                />
+
                 {names && names.map((t) => (
                   <div className="border row mx-2 align-items-center" key={t.id}>
                     <ul className="list-group">
