@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'antd';
 
 const FormElement = ({ handleSubmit, name, setName }) => {
-  <form onsubmit={handleSubmit}>
+  <form onSubmit={handleSubmit}>
     <div className="form">
       <Input
         type="text"

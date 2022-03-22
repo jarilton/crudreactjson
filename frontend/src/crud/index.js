@@ -33,14 +33,14 @@ const Crud = () => {
                       <li className="list-group-item">{t.name}</li>
                     </ul>
                     <span
-                      onclick={() => console.log("")}
+                      onClick={() => console.log("")}
                       className="btn btn-sm float-right"
                     >
                       <DeleteOutlined className="text-danger" />
                     </span>
                     <Link to={`/updates/${t.id}`}>
                       <span
-                        onclick={() => console.log("")}
+                        onClick={() => console.log("")}
                         className="btn btn-sm float-right"
                       >
                         <EditOutlined className="text-warning" />
@@ -55,4 +55,6 @@ const Crud = () => {
       </div>
     )
 }
+
+export default Crud;
 
