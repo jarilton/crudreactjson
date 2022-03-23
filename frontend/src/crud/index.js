@@ -1,7 +1,7 @@
 
 import React, {useEffect, useState} from 'react';
 import { toast } from 'react-toastify';
-import { getNames,createName } from "./api";
+import { getNames,createName, deleteName } from "./api";
 import { Link } from 'react-router-dom'
 import FormElement from './Form'
 import Loading from './Loading'
@@ -33,6 +33,22 @@ const Crud = () => {
     })
   }
 
+  const handleDelete = (id, name) => {
+    if(window.confirm("Deseja realmente excluir?")) {
+      setLoading(true);
+      deleteName(id).then((resp) => {
+        setLoading(false);
+        toast.error(`${name} is deleted`);
+        loadNames();
+      })
+      .catch((err) => {
+        if (err.response.status === 400) 
+        setLoading(false);
+        toast.error(err.response.data);
+      })
+    }
+  }
+
     return(
       <div className="container-fluid">
         <div className="row"> 
@@ -54,7 +70,7 @@ const Crud = () => {
                       <li className="list-group-item">{t.name}</li>
                     </ul>
                     <span
-                      onClick={() => console.log("")}
+                      onClick={() => handleDelete(t.id, t.name)}
                       className="btn btn-sm float-right"
                     >
                       <DeleteOutlined className="text-danger" />

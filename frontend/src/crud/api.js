@@ -5,5 +5,9 @@ export const getNames = async () => {
 }
 
 export const createName = async (name) => {
-  return await axios.post(`${process.env.REACT_APP_API}`, name)
+  return await axios.post(`${process.env.REACT_APP_API}`, name);
+}
+
+export const deleteName = async (id) => {
+  return await axios.delete(`${process.env.REACT_APP_API}/${id}`);
 }
